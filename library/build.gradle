@@ -1,18 +1,18 @@
 apply plugin: 'com.android.library'
 ext {
     bintrayRepo = 'maven'
-    bintrayName = 'easytabs'
+    bintrayName = 'EasyTabs'
 
     publishedGroupId = 'com.goldzweigapps.easytabs'
     libraryName = 'EasyTabs'
-    artifact = 'easytabs'
+    artifact = 'EasyTabs'
 
     libraryDescription = 'EasyTabs is an java based library for android that helps creating material tabs'
 
     siteUrl = 'https://github.com/gilgoldzweig/EasyTabs'
     gitUrl = 'https://github.com/gilgoldzweig/EasyTabs.git'
 
-    libraryVersion = '1.0.0'
+    libraryVersion = '0.9.3'
 
     developerId = 'gil'
     developerName = 'Gil Goldzweig Goldbaum'
