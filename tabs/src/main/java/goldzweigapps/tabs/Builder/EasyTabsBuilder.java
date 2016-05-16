@@ -790,10 +790,6 @@ public class EasyTabsBuilder {
         }
         return this;
     }
-    public EasyTabsBuilder addTab(android.support.v4.app.Fragment fragment, String title, boolean show){
-        adapter.addFrag(fragment, title, show);
-        return this;
-    }
     public EasyTabsBuilder addTabs(boolean hideTitle,TabItem... tabItems){
         for (TabItem item : tabItems){
             adapter.addFrag(item.fragment, item.title, hideTitle);
