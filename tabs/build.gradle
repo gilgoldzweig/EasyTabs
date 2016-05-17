@@ -13,7 +13,7 @@ apply plugin: 'maven'
         siteUrl = 'https://github.com/gilgoldzweig/EasyTabs'
         gitUrl = 'https://github.com/gilgoldzweig/EasyTabs.git'
 
-        libraryVersion = '0.9.3'
+        libraryVersion = '0.9.4'
 
         developerId = 'gil'
         developerName = 'Gil Goldzweig Goldbaum'
