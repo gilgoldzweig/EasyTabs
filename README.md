@@ -10,6 +10,11 @@ Installing
 -------------
 
 **Add this to your gradle.**
+> - repositories {
+    maven {
+        url "https://jitpack.io"
+    }
+}
 
 > - compile 'com.android.support:design:23.3.0'
 
