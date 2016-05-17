@@ -13,7 +13,7 @@ Installing
 
 > - compile 'com.android.support:design:23.3.0'
 
-> - Download the library and add it to your project(gradle link will be available by the end of this week)
+> - compile 'com.github.gilgoldzweig:EasyTabs:f434d9f635'
 
 
 **Add this in your xml file**
