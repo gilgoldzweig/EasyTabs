@@ -10,10 +10,15 @@ Installing
 -------------
 
 **Add this to your gradle.**
+> - repositories {
+    maven {
+        url "https://jitpack.io"
+    }
+}
 
 > - compile 'com.android.support:design:23.3.0'
 
-> - compile 'com.goldzweigapps.easytabs:0.9.3'
+> - compile 'com.github.gilgoldzweig:EasyTabs:f434d9f635'
 
 
 **Add this in your xml file**
