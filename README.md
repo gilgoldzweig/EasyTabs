@@ -4,6 +4,12 @@ EasyTabs
 
 EasyTabs is a library for android that helps create and customize material design tabs easily.
 ----------
+Demo
+-------------
+![Icon_fading](username.github.com/repository/img/image.jpg)
+![Animation](username.github.com/repository/img/image.jpg)
+![Animation1](username.github.com/repository/img/image.jpg)
+![slidingtablayout](username.github.com/repository/img/image.jpg)
 
 
 Installing
@@ -15,12 +21,11 @@ Installing
         url "https://jitpack.io"
     }
 }
-
+> - dependencies {
 > - compile 'com.android.support:design:23.3.0'
 
 > - compile 'com.github.gilgoldzweig:EasyTabs:f434d9f635'
-
-
+> - }
 **Add this in your xml file**
 
     <android.support.design.widget.TabLayout
