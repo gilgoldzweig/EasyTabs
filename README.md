@@ -6,8 +6,8 @@ EasyTabs is a library for android that helps create and customize material desig
 ----------
 Demo
 -------------
-     ![image](gilgoldzweig/EasyTabs/blob/master/animation.gif)
-       ![image](gilgoldzweig/EasyTabs/blob/master/sliding tablayoutfull.gif)
+     ![image](https://github.com/gilgoldzweig/EasyTabs/blob/master/animation.gif)
+       ![image](https://github.com/gilgoldzweig/EasyTabs/blob/master/sliding%20tablayoutfull.gif)
                                                                  
                                                                  
 Installing
