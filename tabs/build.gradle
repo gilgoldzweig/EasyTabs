@@ -23,7 +23,9 @@ apply plugin: 'maven'
         licenseUrl = 'https://opensource.org/licenses/MIT'
         allLicenses = ["MIT"]
     }
-
+configurations.all {
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}
 android {
     compileSdkVersion 24
     buildToolsVersion "23.0.3"
