@@ -41,19 +41,46 @@ Installing
 
 **In your java file**
 
-    EasyTabsBuilder builder;
-    EasyTabsColors colors;
     TabLayout tabs;
     ViewPager pager;
 
     colors = new EasyTabsColors();
     tabs = (TabLayout)findViewById(R.id.tabs);
     pager = (ViewPager)findViewById(R.id.pager);
-    builder = new EasyTabsBuilder(this, tabs, pager);
+    
+    EasyTabsBuilder.init(this,tabs,pager).addTabs( //this = AppCompactActivity, tabs = TabsLayout, pager = ViewPager
+                new TabItem(new frag1(), "number 1"), // Add four Tab items with fragment and title
+                new TabItem(new frag2(), "number 2"),
+                new TabItem(new frag3(), "number 3"),
+                new TabItem(new frag4(), "number 4"))
+                .HideTitle(false)
+                .setBackgroundColor(EasyTabsColors.White)
+                .setIndicatorColor(EasyTabsColors.Black)
+                .setTextColors(EasyTabsColors.Black, EasyTabsColors.RoyalBlue) //Setting two colors selected one and unselected one
+                .addIcons(
+                    R.drawable.ic_person_white_36dp,
+                    R.drawable.ic_photo_camera_white_36dp,
+                    R.drawable.ic_favorite_white_36dp,
+                    R.drawable.ic_help_white_36dp) //Adding four icons
+                .setTransformation(true, new EasyTabletTransformer())
+                .setTabLayoutScrollable(false)
+                .setCustomTypeface(Typeface.createFromAsset(getAssets(), "fonts/bubble.ttf"))
+                .setRTLPosition(true)
+                .withListener(new TabsListener() {
+
+                    @Override
+                    public void onScreenPosition(int position) {
+                        Log.d("tag", String.valueOf(position));
+                    }
+                })
+                .setIconFading(true)
+                .Build();
+    
+    
 
 **To add tabs**
  **Use** 
- `addTabs(Boolean hideTitle, new TabItem(new fragment, "Tab title") );`
+ `addTabs( new TabItem(new fragment, "Tab title") );`
 > **Tip** 
 > You can add as many Tabitems as you want by separate them with **,** between each item.
 
@@ -96,7 +123,11 @@ Available features
 >    - setTextColors(Selected, unselected)
 > 
 >    - setToRTL
->   
+>
+>    - supportRecyclerview(int position, Recyclerview rv)
+>
+>    -withListener(InfoListener)
+>
 >    - setTypeface
 
   
