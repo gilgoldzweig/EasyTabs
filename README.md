@@ -16,9 +16,8 @@ Installing
 			maven { url "https://jitpack.io" }
 		}
 
-
-> - 	dependencies {
-> compile 'com.android.support:design:24.2.0'
+	dependencies {
+ 		compile 'com.android.support:design:24.2.0'
 	        compile 'com.github.gilgoldzweig:EasyTabs:1.0.1'
 	}
 
@@ -40,38 +39,46 @@ Installing
 
 **In your java file**
 
-	  TabLayout tabs;
-	  ViewPager pager;
-	EasyTabsBuilder.init(this,tabs,pager).addTabs( //this = AppCompactActivity, tabs = TabsLayout, pager = ViewPager
-                new TabItem(new frag1(), "number 1"), // Add four Tab items with fragment and title
-                new TabItem(new frag2(), "number 2"),
-                new TabItem(new frag3(), "number 3"),
-                new TabItem(new frag4(), "number 4"))
-                .HideTitle(false)
-                .setBackgroundColor(EasyTabsColors.White)
-                .setIndicatorColor(EasyTabsColors.Black)
-                .setTextColors(EasyTabsColors.Black, EasyTabsColors.RoyalBlue) //Setting two colors selected one and unselected one
-                .addIcons(
-                    R.drawable.ic_person_white_36dp,
-                    R.drawable.ic_photo_camera_white_36dp,
-                    R.drawable.ic_favorite_white_36dp,
-                    R.drawable.ic_help_white_36dp) //Adding four icons
-                .setTransformation(true, new EasyTabletTransformer())
-                .setTabLayoutScrollable(false)
-                .setCustomTypeface(Typeface.createFromAsset(getAssets(), "fonts/bubble.ttf"))
-                .setRTLPosition(true)
-                .withListener(new TabsListener() {
+	 TabLayout tabs;
+	    ViewPager pager;
 
-                    @Override
-                    public void onScreenPosition(int position) {
-                        Log.d("tag", String.valueOf(position));
-                    }
-                })
-                .setIconFading(true)
-                .Build();
+	    @Override
+	    protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		tabs = (TabLayout) findViewById(R.id.tabs);
+		pager = (ViewPager) findViewById(R.id.pager);
+
+		EasyTabsBuilder.init(this,tabs,pager).addTabs( //this = AppCompactActivity, tabs = TabsLayout, pager = ViewPager
+			new TabItem(new frag1(), "Profile"), // Add four Tab items with fragment and title
+			new TabItem(new frag2(), "Camera"),
+			new TabItem(new frag3(), "Favorite"),
+			new TabItem(new frag4(), "Help"))
+			.setBackgroundColor(EasyTabsColors.White)
+			.setIndicatorColor(EasyTabsColors.Black)
+			.setTextColors(EasyTabsColors.Black, EasyTabsColors.RoyalBlue) //Setting two colors selected one and unselected one
+			.addIcons(
+				R.drawable.ic_person_white_36dp,
+				R.drawable.ic_photo_camera_white_36dp,
+				R.drawable.ic_favorite_white_36dp,
+				R.drawable.ic_help_white_36dp) //Adding four icons
+			.setTabLayoutScrollable(false)
+			.setCustomTypeface(Typeface.createFromAsset(getAssets(), "fonts/bubble.ttf"))
+			.withListener(new TabsListener() {
+
+			    @Override
+			    public void onScreenPosition(int position) {
+				Log.d("tag", String.valueOf(position));
+			    }
+			})
+			.setIconFading(true)
+			.HideTitle(true)
+			.Build();
+    }
+
 
 **To add tabs**enter image description here 
- `addTabs(Boolean hideTitle, new TabItem(new fragment, "Tab title") );`
+ `addTabs(new TabItem(new fragment, "Tab title"));`
 > **Tip** 
 > You can add as many Tabitems as you want by separate them with **,** between each item.
 
@@ -82,22 +89,22 @@ Available Transformation
 -------------------
 
 
->    - AccordionTransformer
-   - BackgroundToForegroundTransformer
-   - CubeInTransformer
-   - CubeOutTransformer
-   -  DepthPageTransformer
-   - FlipHorizontalTransformer
-   - 	FlipVerticalTransformer
-   - ForegroundToBackgroundTransformer
-   - RotateDownTransformer
-   - RotateUpTransformer
-   - ScaleInOutTransformer
-   -  StackTransformer
-   - TabletTransformer
-   - ZoomInTransformer
-   - ZoomOutSlideTransformer
-   -  ZoomOutTranformer
+		- AccordionTransformer
+   		- BackgroundToForegroundTransformer
+   		- CubeInTransformer
+		- CubeOutTransformer
+	   	- DepthPageTransformer
+	   	- FlipHorizontalTransformer
+		- FlipVerticalTransformer
+		- ForegroundToBackgroundTransformer
+		- RotateDownTransformer
+		- RotateUpTransformer
+		- ScaleInOutTransformer
+		-  StackTransformer
+		- TabletTransformer
+		- ZoomInTransformer
+		- ZoomOutSlideTransformer
+		-  ZoomOutTranformer
 
 
 Available features
