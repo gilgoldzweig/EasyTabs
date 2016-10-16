@@ -17,8 +17,8 @@ Installing
 		}
 
 	dependencies {
- 		compile 'com.android.support:design:24.2.0'
-	        compile 'com.github.gilgoldzweig:EasyTabs:1.0.1'
+ 		compile 'com.android.support:design:24.2.1'
+	        compile 'com.github.gilgoldzweig:EasyTabs:1.0.2'
 	}
 
 
