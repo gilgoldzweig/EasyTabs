@@ -19,30 +19,28 @@ import java.util.List;
 
 import goldzweigapps.tabs.Adapters.ViewPagerAdapter;
 import goldzweigapps.tabs.Interface.TabsListener;
+import goldzweigapps.tabs.Items.AdapterItem;
+import goldzweigapps.tabs.Items.TabItem;
 
-/**
- * Created by gilgoldzweig on 13/05/16.
- */
+
 public class EasyTabsBuilder{
+    private TabLayout StaticTabsLayout;
+    private ViewPager StaticViewPager;
+    private AppCompatActivity StaticActivity;
+    private boolean isHidden = false;
+    private boolean isFade = false;
+    private int iconsPosition = 0;
+    private Drawable[] Icons;
+    private int[] ResIdIcons;
     private List<Fragment> FragmentList = new ArrayList<>();
     private List<String>  TitleList = new ArrayList<>();
-    private static TabLayout StaticTabsLayout;
-    private static ViewPager StaticViewPager;
-    ViewPagerAdapter adapter;
-    private static AppCompatActivity StaticActivity;
-    boolean isShown = true;
-   private static TabItem[] tabItems;
-    int iconsPosition = 0;
-    Drawable[] Icons;
-    int[] ResIdIcons;
-
-
 
     public static EasyTabsBuilder init(AppCompatActivity activity, TabLayout tabs, ViewPager pager) {
-        StaticTabsLayout = tabs;
-        StaticViewPager = pager;
-        StaticActivity = activity;
-        return new EasyTabsBuilder();
+        EasyTabsBuilder builder = new EasyTabsBuilder();
+        builder.StaticTabsLayout = tabs;
+        builder.StaticViewPager = pager;
+        builder.StaticActivity = activity;
+        return builder;
     }
 
     public EasyTabsBuilder setCustomTypeface(final Typeface selected) {
@@ -67,8 +65,8 @@ public class EasyTabsBuilder{
 
         if (state) {
             StaticTabsLayout.setLayoutDirection(TabLayout.LAYOUT_DIRECTION_RTL);
-//            StaticViewPager.setCurrentItem(FragmentList.size() - 1);
-            StaticViewPager.setLayoutDirection(TabLayout.LAYOUT_DIRECTION_LTR);
+            StaticViewPager.setCurrentItem(FragmentList.size() - 1);
+
         } else {
             StaticViewPager.setCurrentItem(0);
         }
@@ -106,6 +104,7 @@ public class EasyTabsBuilder{
         return this;
     }
     public EasyTabsBuilder setIconFading(boolean state) {
+        isFade = state;
         if (Icons != null){
             if (Icons.length == FragmentList.size()) {
                 if (state) {
@@ -1427,7 +1426,7 @@ public class EasyTabsBuilder{
         }
         return this;
     }
-    public EasyTabsBuilder SupportRecyclerview(int TabPosition, final  RecyclerView rv){
+    public EasyTabsBuilder SupportRecyclerview(int TabPosition, final RecyclerView rv){
         StaticTabsLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -1449,7 +1448,7 @@ public class EasyTabsBuilder{
 
         return this;
     }
-    public EasyTabsBuilder HideTitle(boolean shown){this.isShown = shown; return this;}
+    public EasyTabsBuilder HideTitle(boolean shown){this.isHidden = shown; return this;}
     public EasyTabsBuilder addTabs(TabItem... tabs) {
         for (TabItem item : tabs){
             FragmentList.add(item.getFragment());
@@ -1470,7 +1469,7 @@ public class EasyTabsBuilder{
         return this;
     }
     public void Build(){
-        adapter = new ViewPagerAdapter(StaticActivity.getSupportFragmentManager(), new AdapterItem(FragmentList, TitleList,isShown));
+        ViewPagerAdapter adapter = new ViewPagerAdapter(StaticActivity.getSupportFragmentManager(), new AdapterItem(FragmentList, TitleList, isHidden));
         StaticViewPager.setAdapter(adapter);
         StaticTabsLayout.setupWithViewPager(StaticViewPager);
         StaticTabsLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -1492,8 +1491,12 @@ public class EasyTabsBuilder{
         });
         if (Icons != null){
             for (Drawable icon : Icons){
+
                 try {
                     StaticTabsLayout.getTabAt(iconsPosition).setIcon(icon);
+                    if (isFade && iconsPosition >= 1){
+                        StaticTabsLayout.getTabAt(iconsPosition).getIcon().setAlpha(128);
+                    }
                 } catch (NullPointerException e) {
                     e.printStackTrace();
                 }
@@ -1504,6 +1507,9 @@ public class EasyTabsBuilder{
             for (int icon : ResIdIcons){
                 try {
                     StaticTabsLayout.getTabAt(iconsPosition).setIcon(icon);
+                    if (isFade && iconsPosition >= 1){
+                        StaticTabsLayout.getTabAt(iconsPosition).getIcon().setAlpha(128);
+                    }
                 } catch (NullPointerException e) {
                     e.printStackTrace();
                 }

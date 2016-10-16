@@ -1,4 +1,4 @@
-package goldzweigapps.tabs.Builder;
+package goldzweigapps.tabs.Items;
 
 import android.support.v4.app.Fragment;
 
@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
  * Created by gilgoldzweig on 13/05/16.
  */
 public class TabItem {
-    private android.support.v4.app.Fragment fragment;
+    private Fragment fragment;
     private String title;
 
     public TabItem(Fragment fragment, String title) {
