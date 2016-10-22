@@ -12,13 +12,12 @@ Installing
 **Add this to your gradle.**
 
     repositories {
-			...
 			maven { url "https://jitpack.io" }
 		}
 
 	dependencies {
  		compile 'com.android.support:design:24.2.1'
-	compile 'tech.goldzweigapps:EasyTabs:1.0.2'
+	    compile 'tech.goldzweigapps:EasyTabs:1.0.2'
 	}
 
 
@@ -39,7 +38,7 @@ Installing
 
 **In your java file**
 
-	 TabLayout tabs;
+	    TabLayout tabs;
 	    ViewPager pager;
 
 	    @Override
@@ -49,7 +48,8 @@ Installing
 		tabs = (TabLayout) findViewById(R.id.tabs);
 		pager = (ViewPager) findViewById(R.id.pager);
 
-		EasyTabsBuilder.init(this,tabs,pager).addTabs( //this = AppCompactActivity, tabs = TabsLayout, pager = ViewPager
+		EasyTabsBuilder.init(this,tabs,pager).addTabs( 
+		//this = AppCompactActivity, tabs = TabsLayout, pager = ViewPager
 			new TabItem(new frag1(), "Profile"), // Add four Tab items with fragment and title
 			new TabItem(new frag2(), "Camera"),
 			new TabItem(new frag3(), "Favorite"),
@@ -61,9 +61,9 @@ Installing
 				R.drawable.ic_person_white_36dp,
 				R.drawable.ic_photo_camera_white_36dp,
 				R.drawable.ic_favorite_white_36dp,
-				R.drawable.ic_help_white_36dp) //Adding four icons
+				R.drawable.ic_help_white_36dp) // Adding four icons
 			.setTabLayoutScrollable(false)
-			.setCustomTypeface(Typeface.createFromAsset(getAssets(), "fonts/bubble.ttf"))
+			.setCustomTypeface(Typeface.createFromAsset(getAssets(), "fonts/bubble.ttf")) // Adding custome font
 			.withListener(new TabsListener() {
 
 			    @Override
@@ -71,9 +71,9 @@ Installing
 				Log.d("tag", String.valueOf(position));
 			    }
 			})
-			.setIconFading(true)
-			.HideTitle(true)
-			.Build();
+			.setIconFading(true) // Added the icon fader like in faceboook app
+			.HideTitle(true) //Hiding titles that only icons will be visiable
+			.Build(); // Building the tabs
     }
 
 
