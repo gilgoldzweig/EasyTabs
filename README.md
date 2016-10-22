@@ -18,7 +18,7 @@ Installing
 
 	dependencies {
  		compile 'com.android.support:design:24.2.1'
-	        compile 'tech.goldzweigapps:EasyTabs:1.0.2'
+	compile 'tech.goldzweigapps:EasyTabs:1.0.2'
 	}
 
 
