@@ -43,15 +43,12 @@ public class EasyTabs extends RelativeLayout {
         View rootView = inflate(context, R.layout.easytabs, this);
         tabs = (TabLayout) rootView.findViewById(R.id.tabs);
         pager = (ViewPager) rootView.findViewById(R.id.pager);
-        appCompactActivity = (AppCompatActivity) context;
     }
+
     public ViewPager getViewPager(){
         return pager;
     }
     public TabLayout getTabLayout(){
         return tabs;
-    }
-    public AppCompatActivity getAppCompactActivity(){
-        return appCompactActivity;
     }
 }

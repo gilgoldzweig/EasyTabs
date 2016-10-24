@@ -9,7 +9,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -40,7 +39,7 @@ public class EasyTabsBuilder{
         EasyTabsBuilder builder = new EasyTabsBuilder();
         builder.StaticTabsLayout = easyTabs.getTabLayout();
         builder.StaticViewPager = easyTabs.getViewPager();
-        builder.StaticActivity = easyTabs.getAppCompactActivity();
+        builder.StaticActivity = (AppCompatActivity) easyTabs.getContext();
         return builder;
     }
 
