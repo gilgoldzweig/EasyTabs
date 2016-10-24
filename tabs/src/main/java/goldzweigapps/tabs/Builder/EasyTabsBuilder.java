@@ -21,6 +21,7 @@ import goldzweigapps.tabs.Adapters.ViewPagerAdapter;
 import goldzweigapps.tabs.Interface.TabsListener;
 import goldzweigapps.tabs.Items.AdapterItem;
 import goldzweigapps.tabs.Items.TabItem;
+import goldzweigapps.tabs.View.EasyTabs;
 
 
 public class EasyTabsBuilder{
@@ -35,11 +36,11 @@ public class EasyTabsBuilder{
     private List<Fragment> FragmentList = new ArrayList<>();
     private List<String>  TitleList = new ArrayList<>();
 
-    public static EasyTabsBuilder init(AppCompatActivity activity, TabLayout tabs, ViewPager pager) {
+    public static EasyTabsBuilder init(EasyTabs easyTabs) {
         EasyTabsBuilder builder = new EasyTabsBuilder();
-        builder.StaticTabsLayout = tabs;
-        builder.StaticViewPager = pager;
-        builder.StaticActivity = activity;
+        builder.StaticTabsLayout = easyTabs.getTabLayout();
+        builder.StaticViewPager = easyTabs.getViewPager();
+        builder.StaticActivity = easyTabs.getAppCompactActivity();
         return builder;
     }
 
@@ -1424,28 +1425,6 @@ public class EasyTabsBuilder{
         if (FragmentList.size() > 6) {
             StaticTabsLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         }
-        return this;
-    }
-    public EasyTabsBuilder SupportRecyclerview(int TabPosition, final RecyclerView rv){
-        StaticTabsLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                StaticViewPager.setCurrentItem(tab.getPosition());
-
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-                rv.scrollToPosition(0);
-            }
-        });
-
-
         return this;
     }
     public EasyTabsBuilder HideTitle(boolean shown){this.isHidden = shown; return this;}

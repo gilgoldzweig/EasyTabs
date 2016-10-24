@@ -10,8 +10,8 @@ public class AdapterItem {
     private List<String> TitleList;
     private boolean Title;
 
-    public AdapterItem(List<Fragment> fragmentList, List<String> titleList, boolean title) {
 
+    public AdapterItem(List<Fragment> fragmentList, List<String> titleList, boolean title) {
         FragmentList = fragmentList;
         TitleList = titleList;
         Title = title;
