@@ -22,8 +22,9 @@ import goldzweigapps.tabs.Items.AdapterItem;
 import goldzweigapps.tabs.Items.TabItem;
 import goldzweigapps.tabs.View.EasyTabs;
 
-
+@SuppressWarnings("UnusedDeclaration")
 public class EasyTabsBuilder{
+    
     private TabLayout StaticTabsLayout;
     private ViewPager StaticViewPager;
     private AppCompatActivity StaticActivity;
@@ -108,7 +109,7 @@ public class EasyTabsBuilder{
         if (Icons != null){
             if (Icons.length == FragmentList.size()) {
                 if (state) {
-                    StaticViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                    StaticViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                         @SuppressWarnings("ConstantConditions")
                         @Override
                         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -761,7 +762,7 @@ public class EasyTabsBuilder{
         }else{
             if (ResIdIcons.length == FragmentList.size()) {
                 if (state) {
-                    StaticViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                    StaticViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                         @SuppressWarnings("ConstantConditions")
                         @Override
                         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -1442,6 +1443,7 @@ public class EasyTabsBuilder{
         this.ResIdIcons = icons;
         return this;
     }
+
     public EasyTabsBuilder setTransformation(boolean reverseDrawingOrder, ViewPager.PageTransformer transform) {
         StaticViewPager.setPageTransformer(reverseDrawingOrder, transform);
         return this;
