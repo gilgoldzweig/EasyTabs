@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven'
+
 ext {
     bintrayRepo = 'maven'
     bintrayName = 'EasyTabs'
