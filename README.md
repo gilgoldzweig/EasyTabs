@@ -14,8 +14,7 @@ Installing
     repositories { maven { url "https://jitpack.io" }}
 	
 	dependencies {
-		compile 'com.android.support:design:24.2.1'
-		compile 'tech.goldzweigapps:EasyTabs:1.1'
+		compile 'com.github.gilgoldzweig:EasyTab:1.1.0'
 	}
 
 
