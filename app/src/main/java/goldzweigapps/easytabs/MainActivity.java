@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         tab = (EasyTabs) findViewById(R.id.EasyTabs);
         EasyTabsBuilder.init(tab).addTabs( //this = AppCompactActivity, tabs = TabsLayout, pager = ViewPager
                 new TabItem(new frag1(), "Profile"), // Add four Tab items with fragment and title
-                new TabItem(new frag2(), "Camera"),
+                new TabItem(new frag2(), null),
                 new TabItem(new frag3(), "Favorite"),
                 new TabItem(new frag4(), "Help"))
                 .setBackgroundColor(EasyTabsColors.White)
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 })
                 .setIconFading(true)
-                .HideTitle(true)
+                .changeIconPosition("left")
                 .Build();
     }
 }

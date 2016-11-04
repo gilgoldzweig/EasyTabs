@@ -9,8 +9,11 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -24,28 +27,28 @@ import goldzweigapps.tabs.View.EasyTabs;
 
 @SuppressWarnings("UnusedDeclaration")
 public class EasyTabsBuilder{
-    
     private TabLayout StaticTabsLayout;
     private ViewPager StaticViewPager;
     private AppCompatActivity StaticActivity;
+    private EasyTabs easyTabs;
     private boolean isHidden = false;
     private boolean isFade = false;
     private int iconsPosition = 0;
     private Drawable[] Icons;
     private int[] ResIdIcons;
+    private int top = 0;
     private List<Fragment> FragmentList = new ArrayList<>();
     private List<String>  TitleList = new ArrayList<>();
 
-    public static EasyTabsBuilder init(EasyTabs easyTabs) {
+    public static EasyTabsBuilder with(EasyTabs easyTabs) {
         EasyTabsBuilder builder = new EasyTabsBuilder();
         builder.StaticTabsLayout = easyTabs.getTabLayout();
         builder.StaticViewPager = easyTabs.getViewPager();
         builder.StaticActivity = (AppCompatActivity) easyTabs.getContext();
+        builder.easyTabs = easyTabs;
         return builder;
     }
-
     public EasyTabsBuilder setCustomTypeface(final Typeface selected) {
-
         ViewGroup vg = (ViewGroup) StaticTabsLayout.getChildAt(0);
         int tabsCount = vg.getChildCount();
         for (int j = 0; j < tabsCount; j++) {
@@ -73,11 +76,11 @@ public class EasyTabsBuilder{
         }
         return this;
     }
-    public EasyTabsBuilder setTextColors(@ColorInt int normalColor, @ColorInt int selectedColor) {
-        StaticTabsLayout.setTabTextColors(normalColor, selectedColor);
+    public EasyTabsBuilder setTextColors(@ColorInt int selectedColor, @ColorInt int unselectedColor) {
+        StaticTabsLayout.setTabTextColors(unselectedColor, selectedColor);
         return this;
     }
-    public EasyTabsBuilder setBackgroundColor(@ColorInt int Color) {
+    public EasyTabsBuilder setTabsBackgroundColor(@ColorInt int Color) {
         StaticTabsLayout.setBackgroundColor(Color);
         return this;
     }
@@ -1427,7 +1430,7 @@ public class EasyTabsBuilder{
         }
         return this;
     }
-    public EasyTabsBuilder HideTitle(boolean shown){this.isHidden = shown; return this;}
+    public EasyTabsBuilder hideAllTitles(boolean hide){this.isHidden = hide; return this;}
     public EasyTabsBuilder addTabs(TabItem... tabs) {
         for (TabItem item : tabs){
             FragmentList.add(item.getFragment());
@@ -1436,15 +1439,54 @@ public class EasyTabsBuilder{
         return this;
     }
     public EasyTabsBuilder addIcons(Drawable... icons) {
-      this.Icons = icons;
+        this.Icons = icons;
         return this;
     }
     public EasyTabsBuilder addIcons(int... icons) {
         this.ResIdIcons = icons;
         return this;
-    }
+    }   public EasyTabsBuilder changeIconPosition(String position){
+        FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+        switch (position) {
+            case "left":
+                lp.gravity = Gravity.LEFT;
+                lp.setMargins(0,0, 0, 2);
+                break;
+            case "right":
+                lp.gravity = Gravity.RIGHT;
+                lp.setMargins(0, 2, 0, 0);
+                break;
+            case "top":
+                lp.gravity = Gravity.TOP;
+                lp.setMargins(2, 0, 0, 0);
+                break;
+            case "bottom":
+                lp.gravity = Gravity.BOTTOM;
+                lp.setMargins(0, 0, 2, 0);
+                break;
+            case "center":
+                lp.gravity = Gravity.CENTER;
+                lp.setMargins(0, 0, 0, 0);
+                break;
+            default:
+                break;
+        }
+        ViewGroup vg = (ViewGroup) StaticTabsLayout.getChildAt(0);
+        int tabsCount = vg.getChildCount();
+        for (int j = 0; j < tabsCount; j++) {
+            ViewGroup vgTab = (ViewGroup) vg.getChildAt(j);
+            int tabChildsCount = vgTab.getChildCount();
+            for (int i = 0; i < tabChildsCount; i++) {
+                View tabViewChild = vgTab.getChildAt(i);
 
-    public EasyTabsBuilder setTransformation(boolean reverseDrawingOrder, ViewPager.PageTransformer transform) {
+                if (tabViewChild instanceof ImageView) {
+                    tabViewChild.setLayoutParams(lp);
+                }
+            }
+        }
+        return this;
+    }
+    public EasyTabsBuilder addTransformation(boolean reverseDrawingOrder, ViewPager.PageTransformer transform) {
         StaticViewPager.setPageTransformer(reverseDrawingOrder, transform);
         return this;
     }
@@ -1456,7 +1498,7 @@ public class EasyTabsBuilder{
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 StaticViewPager.setCurrentItem(tab.getPosition());
-                
+
             }
 
             @Override
@@ -1496,10 +1538,15 @@ public class EasyTabsBuilder{
                 iconsPosition++;
             }
         }
- 
-        
-        
+
+
+
     }
+
+
+
+
+
 
 
 }
