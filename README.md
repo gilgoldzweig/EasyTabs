@@ -38,22 +38,31 @@ Installing
 
 **In your java file add the following.**
 	
-		//Finding the EasyTabs view from our xml file
+	//Finding the EasyTabs view from our xml file
+		
 		EasyTabs tabs = (EasyTabs) findViewById(R.id.EasyTabs);
 		
-		//Creating a new builder for our tabs
+	//Creating a new builder for our tabs
+		
 		EasyTabsBuilder.with(tabs)
-		 //Adding the tabs by giving as much tab items as we want each tab item needs a fragment and a title the title can be a null.
+		
+	//Adding the tabs by giving as much tab items as we want each tab item needs a fragment and a title the title can be a null.
 		.addTabs(
 			new TabItem(new frag1(), "Profile"), 
 			new TabItem(new frag2(), "Camera"),
 			new TabItem(new frag3(), "Favorite"),
 			new TabItem(new frag4(), "Help"))
-			// setting the tabs background color the function needs a int color.
+			
+	// setting the tabs background color the function needs a int color.
+	
 			.setTabsBackgroundColor(EasyTabsColors.White)
-			// setting the indicator color the function needs a int color.
+			
+	// setting the indicator color the function needs a int color.
+			
 			.setIndicatorColor(EasyTabsColors.Black)
-			//Setting the text colors the first is when the tab is selected and the secound is when its not selected
+			
+	//Setting the text colors the first is when the tab is selected and the secound is when its not selected
+	
 			.setTextColors(EasyTabsColors.Black, EasyTabsColors.RoyalBlue) 
 			
 	//(optinal) Adding icons, the function need's the same amount of icons as in tabs you can put drawables or res id's int, the icons must be in size of 24dp on 24dp.
