@@ -55,15 +55,23 @@ Installing
 			.setIndicatorColor(EasyTabsColors.Black)
 			//Setting the text colors the first is when the tab is selected and the secound is when its not selected
 			.setTextColors(EasyTabsColors.Black, EasyTabsColors.RoyalBlue) 
+			
+	//(optinal) Adding icons, the function need's the same amount of icons as in tabs you can put drawables or res id's int, the icons must be in size of 24dp on 24dp.
+			
 			.addIcons(
-			//(optinal) Adding icons, the function need's the same amount of icons as in tabs you can put drawables or res id's int, the icons must be in size of 24dp on 24dp.
 				R.drawable.ic_person_white_24dp,
 				R.drawable.ic_photo_camera_white_24dp,
 				R.drawable.ic_favorite_white_24dp,
-				R.drawable.ic_help_white_24dp) // Adding four icons
-			//(optinal)Setting a custom Typeface for our text, in this case i selected the bubble.ttf which is in my assets diractory.
+				R.drawable.ic_help_white_24dp)
+				
+				
+	//(optinal)Setting a custom Typeface for our text, in this case i selected the bubble.ttf which is in my assets diractory.
+			
+			
 			.setCustomTypeface(Typeface.createFromAsset(getAssets(), "fonts/bubble.ttf"))
-			//Adding a listener to keep track of the on screen position(optinal)
+			
+	//Adding a listener to keep track of the on screen position(optinal)
+			
 			.withListener(new TabsListener() {
 
 			    @Override
@@ -71,11 +79,17 @@ Installing
 				Log.d("tag", String.valueOf(position));
 			    }
 			})
-			// (optinal) Adding a icon fading the function fade all the icons that are not on screen and create a fade animation between to fragments like in facebook app.
+			
+	// (optinal) Adding a icon fading the function fade all the icons that are not on screen and create a fade animation between to fragments like in facebook app.
+	
 			.setIconFading(true) 
-			//(optinal) Hiding all titles so there will be only icons visable.
+			
+	//(optinal) Hiding all titles so there will be only icons visable.
+			
 			.HideAllTitles(true) 
-			// Building the tabs must be call last.
+			
+	// Building the tabs must be call last.
+			
 			.Build(); 
 
 
