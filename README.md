@@ -6,21 +6,10 @@ EasyTabs is a library that creates Material Design tabs in less the 5 minuts wit
 
 ----------
 ![gif](https://raw.githubusercontent.com/gilgoldzweig/EasyTabs/master/Mediafiles/slidingtablayout.gif)   <img style="user-select: none; cursor: zoom-in;"
-src="https://raw.githubusercontent.com/gilgoldzweig/EasyTabs/master/Mediafiles/animation.gif" width="240" height="427">
-
-
-<img style="user-select: none; cursor: zoom-in;"
+src="https://raw.githubusercontent.com/gilgoldzweig/EasyTabs/master/Mediafiles/animation.gif" width="240" height="427"> <img style="user-select: none; cursor: zoom-in;"
 src="https://raw.githubusercontent.com/gilgoldzweig/EasyTabs/master/Mediafiles/image1.png" width="240" height="427">
 
-
-<img style="user-select: none; cursor: zoom-in;" src="https://raw.githubusercontent.com/gilgoldzweig/EasyTabs/master/Mediafiles/image2.png" width="240" height="427">
-
-
-<img style="user-select: none; cursor: zoom-in;" src="https://raw.githubusercontent.com/gilgoldzweig/EasyTabs/master/Mediafiles/image3.png" width="240" height="427">
-
-
-
-<img style="user-select: none; cursor: zoom-in;" src="https://raw.githubusercontent.com/gilgoldzweig/EasyTabs/master/Mediafiles/image4.png" width="240" height="427">
+<img style="user-select: none; cursor: zoom-in;" src="https://raw.githubusercontent.com/gilgoldzweig/EasyTabs/master/Mediafiles/image2.png" width="240" height="427"><img style="user-select: none; cursor: zoom-in;" src="https://raw.githubusercontent.com/gilgoldzweig/EasyTabs/master/Mediafiles/image3.png" width="240" height="427"><img style="user-select: none; cursor: zoom-in;" src="https://raw.githubusercontent.com/gilgoldzweig/EasyTabs/master/Mediafiles/image4.png" width="240" height="427">
 
 
 Installing
