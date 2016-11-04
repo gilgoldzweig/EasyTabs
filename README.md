@@ -15,7 +15,7 @@ EasyTabs is a library that creates Material Design tabs in less the 5 minuts wit
 
 ![image4](https://raw.githubusercontent.com/gilgoldzweig/EasyTabs/master/Mediafiles/image4.png)
 
-![image5](https://raw.githubusercontent.com/gilgoldzweig/EasyTabs/master/Mediafiles/image5.png)
+![animationgif](https://raw.githubusercontent.com/gilgoldzweig/EasyTabs/master/Mediafiles/animation.gif)
 
 Installing
 -------------
