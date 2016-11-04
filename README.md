@@ -2,50 +2,73 @@ EasyTabs
 ===================
 
 
-EasyTabs is a library for android that create and customize material design tabs easily.
+EasyTabs is a library that creates Material Design tabs in less the 5 minuts with super easy interface and tons of styling options.
+
 ----------
-![Demo gif](https://raw.githubusercontent.com/gilgoldzweig/EasyTabs/master/Mediafiles/slidingtablayout.gif)
+![gif](https://raw.githubusercontent.com/gilgoldzweig/EasyTabs/master/Mediafiles/slidingtablayout.gif)
+
+![image1](https://raw.githubusercontent.com/gilgoldzweig/EasyTabs/master/Mediafiles/image1.png)
+
+![image2](https://raw.githubusercontent.com/gilgoldzweig/EasyTabs/master/Mediafiles/image2.png)
+
+![image3](https://raw.githubusercontent.com/gilgoldzweig/EasyTabs/master/Mediafiles/image3.png)
+
+![image4](https://raw.githubusercontent.com/gilgoldzweig/EasyTabs/master/Mediafiles/image4.png)
+
+![image5](https://raw.githubusercontent.com/gilgoldzweig/EasyTabs/master/Mediafiles/image5.png)
 
 Installing
 -------------
 
-**Add this to your gradle.**
+**In your app's build.gradle add the following.**
 
-    repositories { maven { url "https://jitpack.io" }}
+    repositories {
+    
+    	maven {url "https://jitpack.io" }
+	
+	}
 	
 	dependencies {
-		compile 'com.github.gilgoldzweig:EasyTab:1.1.1'
+		...
+		compile 'com.github.gilgoldzweig:EasyTab:1.1.2'
 	}
 
 
-**Add this in your xml file**
+**In your xml add the easytabs view.**
 
        <goldzweigapps.tabs.View.EasyTabs
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/EasyTabs" />
 
-**In your java file**
+**In your java file add the following.**
 	
-	
+		//Finding the EasyTabs view from our xml file
 		EasyTabs tabs = (EasyTabs) findViewById(R.id.EasyTabs);
-
-		EasyTabsBuilder.init(tabs)
-		.addTabs( 
-			new TabItem(new frag1(), "Profile"), // Add four Tab items with fragment and title
+		
+		//Creating a new builder for our tabs
+		EasyTabsBuilder.with(tabs)
+		 //Adding the tabs by giving as much tab items as we want each tab item needs a fragment and a title the title can be a null.
+		.addTabs(
+			new TabItem(new frag1(), "Profile"), 
 			new TabItem(new frag2(), "Camera"),
 			new TabItem(new frag3(), "Favorite"),
 			new TabItem(new frag4(), "Help"))
-			.setBackgroundColor(EasyTabsColors.White)
+			// setting the tabs background color the function needs a int color.
+			.setTabsBackgroundColor(EasyTabsColors.White)
+			// setting the indicator color the function needs a int color.
 			.setIndicatorColor(EasyTabsColors.Black)
-			.setTextColors(EasyTabsColors.Black, EasyTabsColors.RoyalBlue) //Setting two colors selected one and unselected one
+			//Setting the text colors the first is when the tab is selected and the secound is when its not selected
+			.setTextColors(EasyTabsColors.Black, EasyTabsColors.RoyalBlue) 
 			.addIcons(
-				R.drawable.ic_person_white_36dp,
-				R.drawable.ic_photo_camera_white_36dp,
-				R.drawable.ic_favorite_white_36dp,
-				R.drawable.ic_help_white_36dp) // Adding four icons
-			.setTabLayoutScrollable(false)
-			.setCustomTypeface(Typeface.createFromAsset(getAssets(), "fonts/bubble.ttf")) // Adding custome font
+			//(optinal) Adding icons, the function need's the same amount of icons as in tabs you can put drawables or res id's int, the icons must be in size of 24dp on 24dp.
+				R.drawable.ic_person_white_24dp,
+				R.drawable.ic_photo_camera_white_24dp,
+				R.drawable.ic_favorite_white_24dp,
+				R.drawable.ic_help_white_24dp) // Adding four icons
+			//(optinal)Setting a custom Typeface for our text, in this case i selected the bubble.ttf which is in my assets diractory.
+			.setCustomTypeface(Typeface.createFromAsset(getAssets(), "fonts/bubble.ttf"))
+			//Adding a listener to keep track of the on screen position(optinal)
 			.withListener(new TabsListener() {
 
 			    @Override
@@ -53,15 +76,19 @@ Installing
 				Log.d("tag", String.valueOf(position));
 			    }
 			})
-			.setIconFading(true) // Added the icon fader like in faceboook app
-			.HideTitle(true) //Hiding titles that only icons will be visiable
-			.Build(); // Building the tabs
+			// (optinal) Adding a icon fading the function fade all the icons that are not on screen and create a fade animation between to fragments like in facebook app.
+			.setIconFading(true) 
+			//(optinal) Hiding all titles so there will be only icons visable.
+			.HideAllTitles(true) 
+			// Building the tabs must be call last.
+			.Build(); 
 
 
 
 **To add tabs**
- 	
+
 	addTabs(new TabItem(new fragment, "Tab title"));
+	
 **Tip** 
 
 	You can add as many Tabitems as you want by separate them with **,** between each item.
@@ -71,7 +98,7 @@ Installing
 
 Available Transformation
 -------------------
-
+	A list of all available transformation.
 
 	AccordionTransformer
 	BackgroundToForegroundTransformer
@@ -94,25 +121,26 @@ Available Transformation
 Available features
 -------------------
 
-	setIcons
-	setTransformation
-	withIconFading (Just like in facebook's app)
-	setIndicatorColor
-	setBackgroundColor
-	setTextColors(Selected, unselected)
-	setToRTL
-	setTypeface
-	supportRecyclerview
-	InfoListener
-	EasyTabsColor // list of usable colors so you wont need to search hex
+	addIcons(int... resid) 
+	addIcons(Drawable... drawable) 
+	addTransformation(boolean reverseDrawingOrder, ViewPager.PageTransformer transform)
+	setIconFading(boolean fade)
+	setIndicatorColor(@ColorInt int IndicatorColor)
+	setBackgroundColor(@ColorInt int BackgroundColor)
+	setTextColors(@ColorInt int selectedColor, @ColorInt int unselectedColor)
+	setRTLPosition(boolean state)
+	setCustomTypeface(final Typeface selected)
+	WithListener(final TabsListener tabsListener)
 	
 
   
   
   
-Bonus
+EasyTabsColors
 ------
-	If you want to use the colors in your layouts just copy this to your colors file
+	EasyTabsColors is a java file filled with a lot of static colors for easy use so you wont need to search for the hex you want.
+
+	If you want to use the colors in your layouts just copy the following to your colors file inside of values.
 	
 	<color name="White">#FFFFFF</color>
 	<color name="Ivory">#FFFFF0</color>
@@ -259,10 +287,22 @@ Bonus
 Creator
 -------
 	 Gil Goldzweig
-
+	 goldzweigapps.tech
+	 
+Apps that using the library
+---------------------------
+	 EasyTabs.
+	 Share my share.
+	 
+	 
+	 
+	 
+	 
+	 
+	 If you're using the library please tell me so i can add you to the list.
 
 Contact me
 =======
-	If you use or need help using the library il be happy to help
+	If you want to contribute to the library or get help send me an email and il answer as soon as possible.
  	Gil5841@gmail.com
 
