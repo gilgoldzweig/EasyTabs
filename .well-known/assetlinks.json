@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.letsqit.app",
+    "sha256_cert_fingerprints":
+    ["3B:E1:56:01:2A:A8:37:78:D2:30:DF:17:F8:12:95:EF:69:72:F5:65:75:12:BD:C0:AF:F4:16:24:EE:52:7A:16"]
+  }
+}]
