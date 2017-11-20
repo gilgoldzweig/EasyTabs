@@ -2,12 +2,12 @@ package goldzweigapps.tabs.Adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
 import goldzweigapps.tabs.Items.AdapterItem;
 
 
-public class ViewPagerAdapter extends FragmentPagerAdapter {
+public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     private AdapterItem AdapterList;
 
     public ViewPagerAdapter(FragmentManager FragmentManger, AdapterItem AdapterList) {
